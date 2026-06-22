@@ -60,7 +60,7 @@ app.get('/api/lotto', async (req, res) => {
         const apiHeaders = {
             ...BASE_HEADERS,
             'Accept': 'application/json, text/javascript, */*; q=0.01',
-            'Referer': `https://www.dhlottery.co.kr/gameResult.do?method=byWin&drwNo=${drwNo}`,
+            'Referer': `https://www.dhlottery.co.kr/lt645/selectPstLt645Info.do?srchStrLtEpsd=${drwNo}`,
             'X-Requested-With': 'XMLHttpRequest'
         };
 
@@ -68,7 +68,7 @@ app.get('/api/lotto', async (req, res) => {
             apiHeaders['Cookie'] = cookie;
         }
 
-        const url = `https://dhlottery.co.kr/common.do?method=getLottoNumber&drwNo=${drwNo}`;
+        const url = `https://www.dhlottery.co.kr/lt645/selectPstLt645Info.do?srchStrLtEpsd=${drwNo}`;
         const response = await axios.get(url, { headers: apiHeaders, timeout: 5000 });
 
         // 여전히 방화벽 HTML을 리턴하는지 검증
